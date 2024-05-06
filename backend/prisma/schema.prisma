@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Fishers {
+  id         Int        @id @default(autoincrement())
+  firstname  String     @db.VarChar(255)
+  lastname   String     @db.VarChar(255)
+  middlename String     @db.VarChar(255)
+  phone      String     @unique @db.VarChar(255)
+  email      String     @unique @db.VarChar(255)
+  birthday   DateTime   @db.Date
+  orders     Orders[]
+
+  @@map("fishers")
+}
+
+model FishingPlaces {
+  id              Int           @id @default(autoincrement())
+  name            String        @db.VarChar(255)
+  square          Float
+  price           Decimal       @db.Money
+  organisation_id Int
+  organisation    Organisation @relation(fields: [organisation_id], references: [id], onDelete: Cascade)
+  orders          Orders[]
+
+  @@map("fishingplaces")
+}
+
+enum OrderStatus {
+  PENDING
+  APPROVED
+  DENIED
+}
+
+model Orders {
+  id            Int           @id @default(autoincrement())
+  status        OrderStatus   @default(PENDING)
+  fishing_start DateTime      @db.Timestamp(6)
+  fishing_end   DateTime      @db.Timestamp(6)
+  createdat     DateTime?     @db.Date @default(now())
+  fisher_id     Int
+  place_id      Int
+  fishers       Fishers       @relation(fields: [fisher_id], references: [id], onDelete: Cascade)
+  fishingPlaces FishingPlaces @relation(fields: [place_id], references: [id], onDelete: Cascade)
+
+  @@map("orders")
+}
+
+model Organisation {
+  id            Int             @id @default(autoincrement())
+  province     String           @db.VarChar(255)
+  fishingPlaces FishingPlaces[]
+
+  @@map("organisation")
+}

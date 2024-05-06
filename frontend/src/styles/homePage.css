@@ -1,0 +1,18 @@
+.home .title {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.home .cource-work {
+  margin-top: 40px;
+}
+
+.home .made-by {
+  margin-top: 40px;
+}
+
+.home .theme-description {
+  width: 50%;
+  margin: 10px auto;
+  text-align: justify;
+}

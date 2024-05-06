@@ -1,0 +1,24 @@
+.content-table {
+  width: 90%;
+  margin: 20px auto;
+}
+
+.content-table .create-button {
+  margin: 20px 0;
+}
+
+.content-table .editRow {
+  width: 150px;
+}
+
+.description .title {
+  text-align: center;
+}
+
+.description .total {
+  text-align: center;
+}
+
+.modal-group {
+  margin-bottom: 20px;
+}

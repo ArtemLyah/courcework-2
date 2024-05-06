@@ -1,0 +1,36 @@
+{
+  "name": "@courcework/backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "start": "node dist/index.js",
+    "start:sync": "npm run db:sync --skip-generate && npm run start",
+    "start:dev": "nodemon src/index.ts",
+    "build:dev": "rm -r || tsc",
+    "build": "tsc",
+    "db:sync": "prisma db push --schema=./prisma/schema.prisma"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@courcework/common": "*",
+    "@prisma/client": "^5.13.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "express-async-errors": "^3.1.1",
+    "prisma": "^5.13.0"
+  }
+}

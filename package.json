@@ -1,0 +1,15 @@
+{
+  "name": "courcework",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": {
+    "packages": [
+      "backend",
+      "common",
+      "frontend"
+    ]
+  }
+}

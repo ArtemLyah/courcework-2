@@ -1,0 +1,25 @@
+apiVersion: skaffold/v4beta9
+kind: Config
+metadata:
+  name: course-app
+build:
+  local:
+    push: false
+  artifacts:
+    - image: backend
+      context: .
+      docker:
+        dockerfile: ./dockerfiles/backend.Dockerfile
+    - image: frontend
+      context: .
+      docker:
+        dockerfile: ./dockerfiles/frontend.Dockerfile
+        buildArgs: 
+          REACT_APP_BACKEND_URL: http://localhost
+
+manifests:
+  rawYaml:
+    - kubernetes/database-sts.yaml
+    - kubernetes/backend-depl.yaml
+    - kubernetes/frontend-depl.yaml
+    - kubernetes/ingress.yaml

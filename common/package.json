@@ -1,0 +1,30 @@
+{
+  "name": "@courcework/common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "build:dev": "rm -r dist || tsc",
+    "build": "tsc",
+    "package": "npm run build:dev && cd ../backend && npm update @courcework/common && cd ../frontend && npm update @courcework/common",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "express": "^4.19.2",
+    "reflect-metadata": "^0.2.2"
+  }
+}

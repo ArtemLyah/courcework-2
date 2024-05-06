@@ -1,0 +1,10 @@
+.pagination-container {
+  width: 20%;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination-container .pagination .page-item a:focus {
+  box-shadow: none;
+  background: none;
+}
